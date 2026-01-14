@@ -1,4 +1,4 @@
-# First Draft learning platform — deep dive (draft v2)
+# First Draft learning platform
 
 First Draft is a learning platform for teaching technical courses. Its design principle is:
 

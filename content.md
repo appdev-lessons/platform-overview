@@ -429,13 +429,14 @@ Graded (test-backed) code blocks are currently Ruby-first: Ruby blocks can be co
 
 ### Anatomy of a runnable code block
 
-````markdown
-```ruby
-puts "Hello"
-```
-{: .codeblock #my_block title="Runnable Ruby" points="1" }
-````
-{: copyable }
+Template (raw Learn-flavored Markdown):
+
+    ```ruby
+    puts "Hello"
+    ```
+    {: .code-block #my_block title="Runnable Ruby" points="1" }
+
+Note: the class is written as `.code-block` here so this template doesn’t itself become a runnable block when this lesson is parsed. When authoring a real runnable block, use `.codeblock`.
 
 Key attributes:
 
@@ -543,28 +544,26 @@ The key is not “grading,” but **fast, structured feedback**:
 
 ### Anatomy of a graded code block
 
-- A runnable block with an ID:
+A runnable block with an ID:
 
-````markdown
-```ruby
-# student code here
-```
-{: .codeblock #my_graded_block title="..." points="2" }
-````
+    ```ruby
+    # student code here
+    ```
+    {: .code-block #my_graded_block title="..." points="2" }
 
-- One or more tests linked via `for="my_graded_block"`:
+One or more tests linked via `for="my_graded_block"`:
 
-````markdown
-```ruby
-describe "..." do
-  it "..." do
-    output = run_codeblock
-    expect(output).to fuzzy_match("...")
-  end
-end
-```
-{: .codeblock-test #my_test_1 for="my_graded_block" title="..." points="1" }
-````
+    ```ruby
+    describe "..." do
+      it "..." do
+        output = run_codeblock
+        expect(output).to fuzzy_match("...")
+      end
+    end
+    ```
+    {: .code-block-test #my_test_1 for="my_graded_block" title="..." points="1" }
+
+Note: the classes are written as `.code-block` / `.code-block-test` here so this template doesn’t itself become runnable/gradable when this lesson is parsed. When authoring real blocks, use `.codeblock` / `.codeblock-test`.
 
 ### Graded Ruby (demo)
 
@@ -1030,33 +1029,31 @@ First Draft includes standard platform capabilities such as:
 
 ### Runnable code block template
 
-````markdown
-```ruby
-puts "Change me"
-```
-{: .codeblock #unique_id title="Runnable Ruby" points="1" }
-````
-{: copyable }
+    ```ruby
+    puts "Change me"
+    ```
+    {: .code-block #unique_id title="Runnable Ruby" points="1" }
+
+Note: use `.codeblock` (not `.code-block`) when you actually want a runnable block.
 
 ### Graded code block template (Ruby)
 
-````markdown
-```ruby
-pp "change me"
-```
-{: .codeblock #unique_id title="Graded Ruby" points="2" }
+    ```ruby
+    pp "change me"
+    ```
+    {: .code-block #unique_id title="Graded Ruby" points="2" }
 
-```ruby
-describe "Graded Ruby" do
-  it "does something" do
-    output = run_codeblock
-    expect(output).to fuzzy_match("something")
-  end
-end
-```
-{: .codeblock-test #unique_test_id for="unique_id" title="Test title" points="1" }
-````
-{: copyable }
+    ```ruby
+    describe "Graded Ruby" do
+      it "does something" do
+        output = run_codeblock
+        expect(output).to fuzzy_match("something")
+      end
+    end
+    ```
+    {: .code-block-test #unique_test_id for="unique_id" title="Test title" points="1" }
+
+Note: use `.codeblock` / `.codeblock-test` (not `.code-block` / `.code-block-test`) when you actually want a graded block.
 
 ---
 

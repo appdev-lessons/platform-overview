@@ -215,7 +215,7 @@ You can:
 ```
 {: copyable }
 
-(**Note:** that should read `![Alt text](assets/example.png)` for actual rendering; `path-to-assets` is used here to prevent actual parsing in this example.)
+(**Note:** the asset path should read `(assets/example.png)` for actual rendering; `path-to-assets` is used here to prevent actual parsing in this example.)
 
 Make anything full-width:
 

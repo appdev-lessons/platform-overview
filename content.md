@@ -1074,13 +1074,13 @@ Pankiewicz, M., Baker, R., & Ocumpaugh, J. (2023). Using intelligent tutoring on
 
 ## Reference: time taken question (copy/paste)
 
-```
----
+    ```
+    ---
 
-- Approximately how long (in minutes) did this lesson take you to complete?
-{: .free_text_number #time_taken title="Time taken" points="1" answer="any" }
-```
-{: copyable }
+    - Approximately how long (in minutes) did this lesson take you to complete?
+    {: .free_text_number #time_taken title="Time taken" points="1" answer="any" }
+    ```
+    {: copyable }
 
 ---
 

@@ -23,8 +23,6 @@ If you want a fast scan, start here. Everything below is expanded in later secti
 
 </div>
 
----
-
 ## The mental model: lessons, courses, runs, units
 
 If you understand these nouns, everything else fits.

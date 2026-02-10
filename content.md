@@ -272,7 +272,7 @@ Use `{: copyable }`, which adds a copy button (<i class="fa-regular fa-copy text
     ```
     {: copyable }
 
-That produces:
+This renders as:
 
 ```
 export API_KEY="replace-me"
@@ -288,7 +288,7 @@ Attach a filename label:
     ```
     {: filename="config/routes.rb" }
 
-That produces:
+This renders as:
 
 ```ruby
 get "/movies", to: "movies#index"
@@ -316,7 +316,7 @@ Example:
     end
     ```
 
-That produces:
+This renders as:
 
 ```ruby{1:(1-6),3:(9-13)}
 tokens = ["hello", "world", "!"]
@@ -337,7 +337,7 @@ $$
 $$
 ```
 
-That produces:
+This renders as:
 
 $$
 \Large
@@ -361,7 +361,7 @@ Use fenced `mermaid` blocks:
         FirstDraft-->>Instructor: Notify if needs approval / needs human
       ```
 
-That produces:
+This renders as:
 
 ```mermaid
 sequenceDiagram
@@ -389,7 +389,7 @@ This supplementary note appears alongside the preceding element.
 ```
 {: copyable }
 
-That produces (see right margin):
+This renders as (see right margin):
 
 <aside>
 This supplementary note appears alongside the preceding element.

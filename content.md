@@ -21,7 +21,7 @@ If you want a fast scan, start here. Everything below is expanded in later secti
 
 | Category | Capabilities (high-level) |
 |---|---|
-| Lesson authoring | Markdown + Learn-flavored extensions, raw HTML, Bootstrap classes, KaTeX math, Mermaid, syntax highlighting (line numbers, line/col highlight), copyable blocks, local assets via `assets/` |
+| Lesson authoring | Markdown + Learn-flavored extensions, raw HTML, Bootstrap classes, Font Awesome icons, KaTeX math, Mermaid, syntax highlighting (line numbers, line/col highlight), copyable blocks, local assets via `assets/` |
 | Interactivity | Quizzes (choose best/all, free text, numeric), runnable code blocks (Ruby/Python/HTML/Hurl), graded Ruby code blocks with tests, optional instructor approvals |
 | Learner UX | Progress indicators, assessment breakdown table, reset attempts without losing credit, prerequisites + locking, "peekable" locked lessons, calendar view with time estimates, tags, in-lesson notes/annotations |
 | Instructor UX | Gradebook (score vs progress, late penalties), withhold/release units, per-student overrides (due dates, waive penalties, unrestrict), invites, secrets, exports |
@@ -244,9 +244,24 @@ This renders as:
 This is a callout box.
 {: class="alert alert-primary" }
 
+#### Font Awesome icons
+
+You can use [Font Awesome](https://fontawesome.com/icons) icons in the lesson, including "pro" icons:
+
+```html
+<i class="fa-regular fa-copy">
+
+<i class="fa-light fa-computer-classic"></i>
+```
+
+To produce
+
+<i class="fa-regular fa-copy"> and <i class="fa-light fa-computer-classic"></i>
+
+
 #### Copyable code blocks
 
-Use `{: copyable }` to allow learners to copy a static code block:
+Use `{: copyable }`, which adds a copy button (<i class="fa-regular fa-copy text-success">) on the right side, to allow learners to copy a static code block:
 
 ```
 export API_KEY="replace-me"

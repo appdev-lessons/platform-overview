@@ -567,6 +567,20 @@ puts "Hello from #{name}!"
 
 ### Runnable Ruby with scaffolding (demo)
 
+The codeblock below has `setup_code="1-3"` and `readonly_lines="[4]"`:
+
+    ```ruby
+    # setup (hidden)
+    require "date"
+
+    today = Date.today
+
+    # TODO: Print today's year as a number.
+    ```
+    {: .codeblock #fd_v2_codeblock_ruby_scaffold title="Scaffolded Ruby demo" points="1" readonly_lines="[4]" setup_code="1-3" }
+
+This renders as:
+
 ```ruby
 # setup (hidden)
 require "date"

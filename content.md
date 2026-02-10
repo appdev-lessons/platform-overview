@@ -1018,18 +1018,16 @@ First Draft includes standard platform capabilities such as:
 
 ### Choose-best question template
 
-    ```
+
     - Prompt
     - Option 1
       - Feedback
     - Option 2
       - Feedback
     {: .choose_best #unique_id_0 title="Title" points="1" answer="2" }
-    ```
 
 ### Choose-all question template
 
-    ```
     - Prompt
     - Option 1
       - Feedback
@@ -1038,7 +1036,6 @@ First Draft includes standard platform capabilities such as:
     - Option 3
       - Feedback
     {: .choose_all #unique_id_1 title="Title" points="2" answer="[1, 3]" }
-    ```
 
 ### Runnable code block template
 
@@ -1072,12 +1069,10 @@ Pankiewicz, M., Baker, R., & Ocumpaugh, J. (2023). Using intelligent tutoring on
 
 ## Reference: time taken question (copy/paste)
 
-    ```
     ---
 
     - Approximately how long (in minutes) did this lesson take you to complete?
     {: .free_text_number #time_taken title="Time taken" points="1" answer="any" }
-    ```
 
 ---
 

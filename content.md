@@ -23,6 +23,11 @@ If you want a fast scan, start here. Everything below is expanded in later secti
 
 </div>
 
+<div class="alert alert-info">
+
+Want a kitchen-sink lesson for reference? [Here is the source code for this lesson here](https://raw.githubusercontent.com/appdev-lessons/platform-overview/refs/heads/main/content.md).
+</div>
+
 ## The mental model: lessons, courses, runs, units
 
 If you understand these nouns, everything else fits.

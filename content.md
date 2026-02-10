@@ -267,6 +267,13 @@ and
 
 Use `{: copyable }`, which adds a copy button (<i class="fa-regular fa-copy text-success"></i>) on the right side, to allow learners to copy a static code block:
 
+    ```
+    export API_KEY="replace-me"
+    ```
+    {: copyable }
+
+That produces:
+
 ```
 export API_KEY="replace-me"
 ```

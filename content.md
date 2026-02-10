@@ -231,7 +231,7 @@ You can drop down to HTML when needed (e.g., iframes, custom layouts, complex ta
 
 #### Bootstrap styling anywhere
 
-You can attach Bootstrap classes to any element:
+You can attach [Bootstrap classes](https://getbootstrap.com/docs/5.3/getting-started/introduction/) to any element:
 
 ```markdown
 This is a callout box.

@@ -256,7 +256,11 @@ You can use [Font Awesome](https://fontawesome.com/icons) icons in the lesson, i
 
 To produce
 
-<i class="fa-regular fa-copy"></i> and <i class="fa-light fa-computer-classic"></i>
+<i class="fa-regular fa-copy"></i> 
+
+and 
+
+<i class="fa-light fa-computer-classic"></i>
 
 
 #### Copyable code blocks

@@ -6,11 +6,6 @@ First Draft is a learning platform for teaching technical courses. Its design pr
 
 This document is intentionally detailed. It’s written for technical instructors evaluating First Draft, and it uses First Draft’s own lesson features to "show, not just tell."
 
-* Table of Contents
-{:toc}
-
----
-
 ## Quick feature index
 
 If you want a fast scan, start here. Everything below is expanded in later sections.
@@ -107,8 +102,6 @@ In plain language:
 - Best attempts roll up into a lesson score.
 - Lesson scores roll up into run/unit progress, then into a run grade.
 
----
-
 ## Roles, permissions, and access control
 
 First Draft distinguishes *what you can see* (access) from *what you can edit* (authoring permissions). In practice, many people occupy multiple roles (e.g., an instructor who also authors).
@@ -155,8 +148,6 @@ Runs can enroll learners via:
 
 Both patterns support common course operations (roster imports, rolling enrollment, workshop links, etc.).
 
----
-
 ## Lesson authoring deep dive
 
 First Draft is Markdown-first because technical course content benefits from:
@@ -197,16 +188,6 @@ Operationally, this enables a tight curriculum iteration loop:
 ### Learn-flavored Markdown
 
 First Draft supports a number of authoring features beyond "vanilla" Markdown:
-
-#### Table of contents
-
-If your lesson has headings, you can generate a TOC:
-
-```
-* Table of Contents
-{:toc}
-```
-{: copyable }
 
 #### Links open in a new tab by default
 
@@ -323,8 +304,6 @@ In complex list items (especially when embedding blocks), insert blank lines bet
 
 Lessons can define environment variables that are passed to sandboxed code execution (useful for API keys, configuration, or reproducibility). This is separate from "Secrets" (which are displayed to learners in a run).
 
----
-
 ## Quiz questions
 
 Quiz questions are first-class lesson elements. They support immediate feedback and contribute points to the lesson grade.
@@ -411,8 +390,6 @@ Template:
 {: .free_text #my_deploy_url title="Deployment URL" points="1" answer="any" needs_approval="true" }
 ```
 {: copyable }
-
----
 
 ## Runnable code blocks
 
@@ -526,8 +503,6 @@ Runnable code blocks include:
 - Output area (stdout/errors, or HTML rendering)
 - "Copy to Study Buddy" button (to share current code context with the AI tutor)
 
----
-
 ## Graded Ruby code blocks + tests
 
 Graded code blocks pair a runnable editor with one or more tests. Learners can run tests and iterate until they pass.
@@ -610,11 +585,7 @@ First Draft includes helpers and conventions to make tests readable for beginner
 - `replace_read_only_value(...)` lets tests control fixed inputs (so tests are deterministic).
 - `failure_if_literally_printing(...)` can prevent "cheating by printing the answer" when appropriate.
 
-For the full guide, see:
-
-- [How to write Ruby codeblock tests](/lessons/684-how-to-write-ruby-codeblock-tests)
-
----
+For the full guide, see: [How to write Ruby codeblock tests](/lessons/684-how-to-write-ruby-codeblock-tests)
 
 ## Projects via LTI (external tools + grade passback)
 
@@ -627,32 +598,26 @@ LTI{Launch Project}(https://grades.firstdraft.com/launch)[test]{secret}(10)[Proj
 ```
 {: copyable }
 
-which renders as:
-
-LTI{Launch Project}(https://grades.firstdraft.com/launch)[tkcKih6i68NmbdcmcdeCEjg2Jt]{jhytB1uc3YrCA26fFWDEw23U}(10)[Project Name]
-
 This line of markdown is made up of:
 
 - `LTI`
-  - The line must start with this to render the launch button.
+   The line must start with this to render the launch button.
 - `{Launch Project}`
-  - The copy shown on the button.
+   The copy shown on the button.
 - `(https://grades.firstdraft.com/launch)`
-  - The launch URL, which will need to be configured on the first click of the button by the author.
+   The launch URL, which will need to be configured on the first click of the button by the author.
 - `[test]{secret}`
-  - The consumer (`test`) and secret (`secret`) key provided by the tool.
+   The consumer (`test`) and secret (`secret`) key provided by the tool.
 - `(10)`
-  - The number of points the project is worth within the current lesson.
+   The number of points the project is worth within the current lesson.
 - `[Project Name]`
-  - The name of the project displayed to the user in the progress table.
+   The name of the project displayed to the user in the progress table.
 
 This creates:
 
 - an embedded launch element in the lesson
 - a points-bearing assessment item
 - a grade passback path so project scores contribute to lesson/run grades
-
----
 
 ## Scoring and progress: how grades are computed
 
@@ -733,8 +698,6 @@ If a lesson includes the standard `#time_taken` question, First Draft can comput
 
 These values appear in places like lesson badges and calendar views to help instructors calibrate workload and sequencing.
 
----
-
 ## Pacing and gating: passing scores, due dates, late penalties, prerequisites
 
 This is where First Draft supports real course operations.
@@ -784,8 +747,6 @@ Unrestricted units are available regardless of prerequisite lock state. This is 
 
 Optional units don’t block progression and can be excluded from calendar time estimates.
 
----
-
 ## Learner UX deep dive (what the platform surfaces)
 
 ### Run overview
@@ -823,8 +784,6 @@ Inside a lesson, learners get:
 
 The "Assessment Details" table is especially useful pedagogically: it makes "what counts" legible, which reduces learner anxiety and helps instructors debug ambiguous grading.
 
----
-
 ## Instructor UX deep dive
 
 ### Instructor dashboard (per run)
@@ -861,8 +820,6 @@ For `needs_approval` submissions, instructors approve the best attempt. Approval
 ### Secrets
 
 Instructors can set run-wide secrets (API keys, shared accounts). Learners can view them from the run UI.
-
----
 
 ## Study Buddy deep dive
 
@@ -931,8 +888,6 @@ For technical instructors, it’s often useful to know whether learners are usin
 - mode selection (Socratic vs direct)
 - escalation frequency (how often "page a human" is used)
 
----
-
 ## Notes and annotations
 
 First Draft supports in-lesson highlighting and notes:
@@ -942,8 +897,6 @@ First Draft supports in-lesson highlighting and notes:
 - Notes can be used as anchors for discussion and Study Buddy posts.
 
 This encourages precise questions and supports instructors reviewing learner confusion in context.
-
----
 
 ## Notifications and communication
 
@@ -962,8 +915,6 @@ Example events:
 - submission approved
 - due tomorrow reminder
 - stale post reminders
-
----
 
 ## Integrations and operational notes (for technical evaluators)
 
@@ -991,8 +942,6 @@ First Draft supports LTI as both:
 ### Optional purchase/trial gating
 
 Runs can support trial lessons plus purchase flows (Stripe) when needed for paid cohorts.
-
----
 
 ## Operations and administration (platform-level features)
 
@@ -1060,8 +1009,6 @@ First Draft includes standard platform capabilities such as:
     end
     ```
     {: .codeblock-test #unique_test_id for="unique_id_3" title="Test title" points="1" }
-
----
 
 ## References
 

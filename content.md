@@ -626,10 +626,29 @@ Some work is best done outside a single lesson page (e.g., multi-file projects).
 
 Authoring syntax (template):
 
-<!-- ```
-LTI{Launch project}(https://grades.firstdraft.com/launch)[consumer]{secret}(10)[Project Name]
 ```
-{: copyable } -->
+LTI{Launch Project}(https://grades.firstdraft.com/launch)[test]{secret}(10)[Project Name]
+```
+{: copyable }
+
+which renders as:
+
+LTI{Launch Project}(https://grades.firstdraft.com/launch)[tkcKih6i68NmbdcmcdeCEjg2Jt]{jhytB1uc3YrCA26fFWDEw23U}(10)[Project Name]
+
+This line of markdown is made up of:
+
+- `LTI`
+  - The line must start with this to render the launch button.
+- `{Launch Project}`
+  - The copy shown on the button.
+- `(https://grades.firstdraft.com/launch)`
+  - The launch URL, which will need to be configured on the first click of the button by the author.
+- `[test]{secret}`
+  - The consumer (`test`) and secret (`secret`) key provided by the tool.
+- `(10)`
+  - The number of points the project is worth within the current lesson.
+- `[Project Name]`
+  - The name of the project displayed to the user in the progress table.
 
 This creates:
 

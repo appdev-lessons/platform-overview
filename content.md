@@ -350,16 +350,16 @@ The implementation uses [KaTeX](https://katex.org/) and is focused on math rende
 
 Use fenced `mermaid` blocks:
 
-      ```mermaid
-      sequenceDiagram
-        participant Learner
-        participant FirstDraft
-        participant Instructor
-        Learner->>FirstDraft: Attempt quiz / run code
-        FirstDraft-->>Learner: Feedback + points
-        Learner->>FirstDraft: Ask Study Buddy
-        FirstDraft-->>Instructor: Notify if needs approval / needs human
-      ```
+    ```mermaid
+    sequenceDiagram
+      participant Learner
+      participant FirstDraft
+      participant Instructor
+      Learner->>FirstDraft: Attempt quiz / run code
+      FirstDraft-->>Learner: Feedback + points
+      Learner->>FirstDraft: Ask Study Buddy
+      FirstDraft-->>Instructor: Notify if needs approval / needs human
+    ```
 
 This renders as:
 

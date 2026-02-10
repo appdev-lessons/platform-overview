@@ -249,19 +249,19 @@ This is a callout box.
 You can use [Font Awesome](https://fontawesome.com/icons) icons in the lesson, including "pro" icons:
 
 ```html
-<i class="fa-regular fa-copy">
+<i class="fa-regular fa-copy"></i>
 
 <i class="fa-light fa-computer-classic"></i>
 ```
 
 To produce
 
-<i class="fa-regular fa-copy"> and <i class="fa-light fa-computer-classic"></i>
+<i class="fa-regular fa-copy"></i> and <i class="fa-light fa-computer-classic"></i>
 
 
 #### Copyable code blocks
 
-Use `{: copyable }`, which adds a copy button (<i class="fa-regular fa-copy text-success">) on the right side, to allow learners to copy a static code block:
+Use `{: copyable }`, which adds a copy button (<i class="fa-regular fa-copy text-success"></i>) on the right side, to allow learners to copy a static code block:
 
 ```
 export API_KEY="replace-me"

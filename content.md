@@ -170,15 +170,18 @@ GitHub-connected lessons follow a strict repo convention:
 - `assets/` directory
   - Images/gifs referenced from `content.md` via relative paths like `assets/example.png`
 
+When connected, the lesson receives a URL containing a unique ID followed by the repo name (e.g., `https://firstdraft.com/lessons/799-platform-overview`), which provides a handy reference to both the lesson and its source repo.
+
 Behavior:
 
 - Commits/pushes update the rendered lesson automatically.
-- Branches create independent preview lessons (useful for PR review).
+- Branches create independent preview lessons (useful for PR review). Branch lessons can be found from the main lesson's "Other branches" UI, which links to a `/branches` page.
 - Local `assets/` references are uploaded/hosted and rewritten to served URLs.
+- Even GitHub-connected lessons can be edited inline on the platform. Inline edits are committed back to the repo automatically (with a generic commit message), keeping both locations in sync. Small fixes like typos are convenient to make inline; larger rewrites are better done via external editors and GitHub commits.
 
 Operationally, this enables a tight curriculum iteration loop:
 
-- Draft changes on a branch → get a preview lesson URL → review in PR → merge to `main` → production lesson updates automatically.
+- Draft changes on a branch → get a preview lesson URL → review in pull request → merge to `main` branch → production lesson updates automatically. The branch lesson can then be deleted.
 
 ### Learn-flavored Markdown
 
@@ -215,7 +218,7 @@ Make anything full-width:
 
 #### Raw HTML anywhere
 
-You can drop down to HTML when needed (e.g., iframes, custom layouts, complex tables).
+You can drop down to HTML when needed (e.g., iframes, custom layouts, complex tables). When mixing Markdown inside raw HTML elements, omit initial indentation within the element for correct rendering.
 
 #### Bootstrap styling anywhere
 
@@ -252,10 +255,14 @@ get "/movies", to: "movies#index"
 
 #### Line and column highlighting in fenced code
 
-You can highlight:
+Add highlight options after the language tag in a fenced code block, inside brackets:
 
-- lines: `ruby{1,3}` or `ruby{1-4}`
-- columns: `ruby{1:(1-6)}` or `ruby{3:(9-13)}`
+- individual lines: `ruby{1}` or `ruby{1,2,4,5}`
+- line ranges: `ruby{1-3}`
+- individual columns: `ruby{1:(3)}` or `ruby{1:(3,4,5)}`
+- column ranges: `ruby{1:(1-6)}` or `ruby{3:(9-13)}`
+
+Any combination works, and highlighting also works with HTML and ERB code blocks (e.g., `erb{1:(1-3)}`).
 
 Example:
 
@@ -269,12 +276,14 @@ end
 
 #### Math (KaTeX)
 
-Use LaTeX inside `$$ ... $$`:
+Use LaTeX math inside `$$ ... $$` (double dollar-sign delimiters, not the single `$` used in vanilla LaTeX):
 
 $$
 \Large
 \text{score} = \frac{\text{points earned}}{\text{points possible}}
 $$
+
+The implementation uses [KaTeX](https://katex.org/) and is focused on math rendering. Arbitrary LaTeX formatting commands (e.g., `\textbf{}`, `\emph{}`) will not render — use standard Markdown for text styling. In general, if you take an existing LaTeX equation from your notes and wrap it in `$$` above and below, the equation will render as expected.
 
 #### Mermaid diagrams
 
@@ -293,7 +302,35 @@ sequenceDiagram
 
 #### Lists (practical note)
 
-In complex list items (especially when embedding blocks), insert blank lines between items to keep layout predictable.
+In complex list items (especially when embedding blocks), insert blank lines between items to keep layout predictable. Content within list items needs to be within a containing element — blank lines between items achieve this.
+
+#### Asides
+
+Place an `<aside>` element *after* the element you want it to appear next to. Asides can contain Markdown, images, code blocks, and lists. Avoid putting critical-path content in asides — use them for supplementary context. For content that doesn't need to be visible in the flow at all, use standard [Markdown footnotes](https://github.blog/changelog/2021-09-30-footnotes-now-supported-in-markdown-fields/) instead.
+
+```html
+<aside>
+This supplementary note appears alongside the preceding element.
+</aside>
+```
+{: copyable }
+
+#### Blockquotes
+
+Standard Markdown blockquotes work as expected:
+
+```
+> The ability to quote is a serviceable substitute for wit.
+>
+> — W. Somerset Maugham
+```
+{: copyable }
+
+This renders as:
+
+> The ability to quote is a serviceable substitute for wit.
+>
+> — W. Somerset Maugham
 
 ### Environment variables for runnable/graded code
 
@@ -321,17 +358,20 @@ Quiz questions are authored as a Markdown list, followed by a declaration line:
   - Feedback if selected
 - Option B
   - Feedback if selected
+  - Additional feedback if selected
 {: .choose_best #unique_id_4 title="Title" points="1" answer="2" }
 ```
 {: copyable }
 
+Each option can have one or more indented feedback lines (sub-bullets). Feedback is shown to the learner when that option is selected — this is how incorrect answers can teach.
+
 Key attributes:
 
 - `.choose_best` / `.choose_all` / `.free_text` / `.free_text_number`
-- `#unique_id` (must be unique within the lesson; used for persistence)
-- `title="..."` (used in progress/grade views)
-- `points="..."` (integer points possible)
-- `answer="..."` (index of correct option(s), or `any` in some modes)
+- `#unique_id` (Must be unique within the lesson; used for persistence. Any questions with the same ID in the same lesson will be treated as the same question.)
+- `title="..."` (Used in progress/grade views and as a header for runnable code blocks.)
+- `points="..."` (Integer points possible.)
+- `answer="..."` (Index of correct option(s), or `any` in some modes; indexing begins at 1.)
 - `needs_approval="true|false"` (optional)
 
 ### choose_best (demo)
@@ -356,6 +396,8 @@ Key attributes:
   - Yes — multiple correct clauses.
 {: .choose_all #fd_v2_quiz_choose_all_demo title="choose_all demo" points="2" answer="[1, 3]" }
 
+Partial credit for `choose_all`: points are divided by the number of correct answers. For example, if a question has 3 points and 3 correct answers, the learner receives 1 point per correct answer. Full points are awarded only after all correct answers are selected.
+
 ### free_text (demo with fallback)
 
 - Type the platform name.
@@ -364,6 +406,8 @@ Key attributes:
 - any
   - Not quite — check the title at the top of this lesson.
 {: .free_text #fd_v2_quiz_free_text_demo title="free_text demo" points="1" answer="1" }
+
+`free_text` matching is lenient: the learner can type an exact or partial match, and comparison is case-insensitive (via regex). For example, if the correct answer is `Ruby`, inputs like `ruby` or `RUBY` will match.
 
 ### free_text_number (demo)
 
@@ -374,9 +418,21 @@ Key attributes:
   - Not quite — it’s the integer after 3.
 {: .free_text_number #fd_v2_quiz_free_text_number_demo title="free_text_number demo" points="1" answer="1" }
 
+`free_text_number` matching is exact: the learner must enter the correct number. Equivalent decimals are accepted (e.g., `5`, `5.0`, `5.00` all match), but `5.1` does not.
+
+### Quiz special cases
+
+A few patterns come up frequently when authoring quiz questions:
+
+- **Accept any answer**: set `answer="any"` to mark all options as correct. Useful for surveys, reflections, or opinion questions.
+
+- **Fallback feedback**: for `free_text` and `free_text_number`, add an `any` option as the last entry to show a custom message when the learner's input doesn't match any listed option (as shown in the demos above).
+
+- **Optional answer (no wrong answer)**: omitting the `answer` attribute entirely means any answer is accepted. However, note that for `choose_all` / `choose_best`, omitting `answer` means *no* answer is marked correct — so any selection will be marked incorrect.
+
 ### Instructor approval workflow (authoring pattern)
 
-For tasks that require human judgment (URLs, reflections, screenshots), set `needs_approval="true"`. The learner can submit; points are awarded when an instructor approves the best attempt.
+For tasks that require human judgment (URLs, reflections, screenshots), set `needs_approval="true"`. The learner can submit; points are awarded when an instructor approves the best attempt. This option should only be used for lessons contained in a course. When using it, it's advisable to set the lesson's passing score below 100% (the default 80% works well) so learners aren't blocked from further progress while awaiting approval.
 
 Template:
 
@@ -410,13 +466,14 @@ Template (raw Learn-flavored Markdown):
 
 Key attributes:
 
+- `ruby` (language: ruby, hurl, html, python)
 - `.codeblock` (turns a fenced code block into a runnable editor)
 - `#unique_identifier` (links the block to attempts/submissions)
 - `title="..."` (used in UI and reporting)
 - `points="..."` (points awarded when run at least once)
 - optional:
-  - `readonly_lines="[1,2,3]"`
-  - `setup_code="1-4"`
+  - `readonly_lines="[1,2,3]"` (these lines are visible but not editable by the learner; useful for fixed inputs or constraints)
+  - `setup_code="1-4"` (these lines are hidden from the learner and excluded from the editor's line numbering; useful for hidden setup methods)
 
 ### Runnable Ruby (demo)
 
@@ -519,7 +576,7 @@ A runnable block with an ID:
     ```
     {: .codeblock #my_graded_block title="..." points="2" }
 
-One or more tests linked via `for="my_graded_block"`:
+One or more tests linked via `for="my_graded_block"`. The `for` attribute **must** match the `#unique_identifier` of the associated code block:
 
     ```ruby
     describe "..." do
@@ -530,6 +587,8 @@ One or more tests linked via `for="my_graded_block"`:
     end
     ```
     {: .codeblock-test #my_test_1 for="my_graded_block" title="..." points="1" }
+
+Total points for a graded block are the sum of its individual test points. A naming convention that works well: use the code block's `title` as the `describe` line, and form each test's `title` from the `describe` + `it` text.
 
 ### Graded Ruby (demo)
 
@@ -550,7 +609,7 @@ describe "Graded Ruby demo" do
   end
 end
 ```
-{: .codeblock-test #fd_v2_graded_word_length_test_1 for="fd_v2_graded_word_length" title="Prints length for banana" points="1" }
+{: .codeblock-test #fd_v2_graded_word_length_test_1 for="fd_v2_graded_word_length" title="Graded Ruby demo prints the length for 'banana'" points="1" }
 
 ```ruby
 describe "Graded Ruby demo" do
@@ -561,7 +620,7 @@ describe "Graded Ruby demo" do
   end
 end
 ```
-{: .codeblock-test #fd_v2_graded_word_length_test_2 for="fd_v2_graded_word_length" title="Prints length for for" points="1" }
+{: .codeblock-test #fd_v2_graded_word_length_test_2 for="fd_v2_graded_word_length" title="Graded Ruby demo prints the length for 'for'" points="1" }
 
 ### Scoring semantics (what instructors should know)
 
@@ -580,7 +639,14 @@ First Draft includes helpers and conventions to make tests readable for beginner
 - `replace_read_only_value(...)` lets tests control fixed inputs (so tests are deterministic).
 - `failure_if_literally_printing(...)` can prevent "cheating by printing the answer" when appropriate.
 
-For the full guide, see: [How to write Ruby codeblock tests](/lessons/684-how-to-write-ruby-codeblock-tests)
+For the full guide, see:
+
+- [How to write Ruby codeblock tests](/lessons/684-how-to-write-ruby-codeblock-tests)
+
+The source code for a few lessons with extensive graded code blocks are also helpful as reference (search for `.codeblock-test` in the source):
+
+- [Ruby Intro: Each](https://raw.githubusercontent.com/appdev-lessons/ruby-intro-each/main/content.md)
+- [Ruby Gym: Think Fast](https://raw.githubusercontent.com/appdev-lessons/ruby-gym-think-fast/main/content.md)
 
 ## Projects via LTI (external tools + grade passback)
 
@@ -602,7 +668,7 @@ This line of markdown is made up of:
 - `(https://grades.firstdraft.com/launch)`
    The launch URL, which will need to be configured on the first click of the button by the author.
 - `[test]{secret}`
-   The consumer (`test`) and secret (`secret`) key provided by the tool.
+   The consumer (`test`) and secret (`secret`) key provided by the tool. These keys will need to be found or requested from the tool provider (e.g., Grades) to properly configure the button.
 - `(10)`
    The number of points the project is worth within the current lesson.
 - `[Project Name]`

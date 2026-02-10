@@ -4,7 +4,7 @@ First Draft is a learning platform for teaching technical courses. Its design pr
 
 > Tighten the feedback loop for learners, instructors, and authors.
 
-This document is intentionally detailed. It’s written for technical instructors evaluating First Draft, and it uses First Draft’s own lesson features to “show, not just tell.”
+This document is intentionally detailed. It’s written for technical instructors evaluating First Draft, and it uses First Draft’s own lesson features to "show, not just tell."
 
 * Table of Contents
 {:toc}
@@ -21,9 +21,9 @@ If you want a fast scan, start here. Everything below is expanded in later secti
 |---|---|
 | Lesson authoring | Markdown + Learn-flavored extensions, raw HTML, Bootstrap classes, KaTeX math, Mermaid, syntax highlighting (line numbers, line/col highlight), copyable blocks, local assets via `assets/` |
 | Interactivity | Quizzes (choose best/all, free text, numeric), runnable code blocks (Ruby/Python/HTML/Hurl), graded Ruby code blocks with tests, optional instructor approvals |
-| Learner UX | Progress indicators, assessment breakdown table, reset attempts without losing credit, prerequisites + locking, “peekable” locked lessons, calendar view with time estimates, tags, in-lesson notes/annotations |
+| Learner UX | Progress indicators, assessment breakdown table, reset attempts without losing credit, prerequisites + locking, "peekable" locked lessons, calendar view with time estimates, tags, in-lesson notes/annotations |
 | Instructor UX | Gradebook (score vs progress, late penalties), withhold/release units, per-student overrides (due dates, waive penalties, unrestrict), invites, secrets, exports |
-| Study Buddy | Integrated AI tutor (Socratic vs direct), anonymous mode, copy-code-to-Study-Buddy, human escalation (“page a human”), prompt configuration + versioning, oversight tooling |
+| Study Buddy | Integrated AI tutor (Socratic vs direct), anonymous mode, copy-code-to-Study-Buddy, human escalation ("page a human"), prompt configuration + versioning, oversight tooling |
 | Integrations | GitHub-connected lessons (branches → preview lessons), Cloudinary asset hosting + uploads, LTI tool provider + tool consumer, optional Stripe purchase/trial gating |
 
 </div>
@@ -46,7 +46,7 @@ A **lesson** is the atomic unit of content: Markdown rendered into a web page, w
 
 A **course** is a structured collection of units (usually lessons), plus course-level configuration such as:
 
-- Ordering and hierarchy (including nested “course units”)
+- Ordering and hierarchy (including nested "course units")
 - Default grading and pacing policies (passing thresholds, late discounts)
 - A Study Buddy prompt (optional) to shape AI behavior for the course
 
@@ -57,8 +57,8 @@ A **run** is an instance of a course for a specific cohort/term. Runs are where 
 - Due dates (in a specific time zone)
 - Enrollment (learner/instructor roles, invites, access links)
 - Gradebook exports and instructor dashboards
-- Run-wide “secrets” shared with learners (API keys, credentials, etc.)
-- Optional purchase/trial gating and “peekability”
+- Run-wide "secrets" shared with learners (API keys, credentials, etc.)
+- Optional purchase/trial gating and "peekability"
 
 ### Unit
 
@@ -144,7 +144,7 @@ This makes it possible to host a public preview without creating a separate mark
 
 ### Open vs closed lessons
 
-Lessons can be public (“open”) or restricted. Restricted lessons require appropriate access (e.g., course enrollment or collaboration).
+Lessons can be public ("open") or restricted. Restricted lessons require appropriate access (e.g., course enrollment or collaboration).
 
 ### Invitation links and invites
 
@@ -196,7 +196,7 @@ Operationally, this enables a tight curriculum iteration loop:
 
 ### Learn-flavored Markdown
 
-First Draft supports a number of authoring features beyond “vanilla” Markdown:
+First Draft supports a number of authoring features beyond "vanilla" Markdown:
 
 #### Table of contents
 
@@ -321,7 +321,7 @@ In complex list items (especially when embedding blocks), insert blank lines bet
 
 ### Environment variables for runnable/graded code
 
-Lessons can define environment variables that are passed to sandboxed code execution (useful for API keys, configuration, or reproducibility). This is separate from “Secrets” (which are displayed to learners in a run).
+Lessons can define environment variables that are passed to sandboxed code execution (useful for API keys, configuration, or reproducibility). This is separate from "Secrets" (which are displayed to learners in a run).
 
 ---
 
@@ -363,22 +363,22 @@ Key attributes:
 ### choose_best (demo)
 
 - Which statement best describes First Draft’s quiz design?
-- “A quiz is just a score.”
+- "A quiz is just a score."
   - Not quite — each option can include feedback, so the question can teach.
-- “Every option is an opportunity for feedback.”
+- "Every option is an opportunity for feedback."
   - Correct — incorrect answers can explain misconceptions.
-- “Quizzes are only for final assessment.”
+- "Quizzes are only for final assessment."
   - In First Draft they’re used continuously, often as micro-checks.
 {: .choose_best #fd_v2_quiz_choose_best_demo title="choose_best demo" points="1" answer="2" }
 
 ### choose_all (demo with partial credit)
 
 - Which of the following are good uses of `choose_all`?
-- “Select all invariants that must hold for a binary search.”
+- "Select all invariants that must hold for a binary search."
   - Yes — there can be multiple correct invariants.
-- “Pick the single best definition of ‘encapsulation’.”
+- "Pick the single best definition of ‘encapsulation’."
   - Better as `choose_best`.
-- “Select all SQL clauses that can appear in a basic SELECT query.”
+- "Select all SQL clauses that can appear in a basic SELECT query."
   - Yes — multiple correct clauses.
 {: .choose_all #fd_v2_quiz_choose_all_demo title="choose_all demo" points="2" answer="[1, 3]" }
 
@@ -526,7 +526,7 @@ Runnable code blocks include:
 
 - Run + reset controls
 - Output area (stdout/errors, or HTML rendering)
-- “Copy to Study Buddy” button (to share current code context with the AI tutor)
+- "Copy to Study Buddy" button (to share current code context with the AI tutor)
 
 ---
 
@@ -536,9 +536,9 @@ Graded code blocks pair a runnable editor with one or more tests. Learners can r
 
 ### Why graded blocks are effective for beginners
 
-The key is not “grading,” but **fast, structured feedback**:
+The key is not "grading," but **fast, structured feedback**:
 
-- Micro-tasks (“write the one line that matters”) reduce cognitive load.
+- Micro-tasks ("write the one line that matters") reduce cognitive load.
 - Tests can be written with beginner-friendly matchers (`fuzzy_match`) and clear failure messages.
 - Learners can iterate without losing previously-earned credit (best attempt wins).
 
@@ -612,7 +612,7 @@ First Draft includes helpers and conventions to make tests readable for beginner
 - `run_codeblock` captures program output clearly.
 - `fuzzy_match` tolerates superficial formatting differences.
 - `replace_read_only_value(...)` lets tests control fixed inputs (so tests are deterministic).
-- `failure_if_literally_printing(...)` can prevent “cheating by printing the answer” when appropriate.
+- `failure_if_literally_printing(...)` can prevent "cheating by printing the answer" when appropriate.
 
 For the full guide, see:
 
@@ -660,9 +660,9 @@ This creates:
 
 ## Scoring and progress: how grades are computed
 
-This section is a “trust but verify” explanation for instructors who care about grading semantics.
+This section is a "trust but verify" explanation for instructors who care about grading semantics.
 
-### The unit of grading is “points”
+### The unit of grading is "points"
 
 Every assessable element has a **points possible** value:
 
@@ -676,7 +676,7 @@ Every assessable element has a **points possible** value:
 For both quizzes and code blocks, First Draft stores multiple attempts and retains the **best** one for scoring. This enables:
 
 - exploration without penalty
-- “reset answers” workflows that give learners a clean slate while keeping earned credit
+- "reset answers" workflows that give learners a clean slate while keeping earned credit
 
 ### Lesson score
 
@@ -686,7 +686,7 @@ Conceptually:
 - `points_possible = sum(points possible across assessments)`
 - `lesson_score = points_earned / points_possible`
 
-The UI reflects this in the “Assessment Details” table and the progress pill.
+The UI reflects this in the "Assessment Details" table and the progress pill.
 
 ### Run-unit progress vs run-unit score (late penalties)
 
@@ -720,7 +720,7 @@ So:
 - progress (raw) = (8 + 2) / 10 = 100%
 - score (after penalty) = (8 + 1.5) / 10 = 95%
 
-This is why gradebook cells can show a main score plus a parenthesized “raw progress.”
+This is why gradebook cells can show a main score plus a parenthesized "raw progress."
 
 ### Relative weights
 
@@ -732,7 +732,7 @@ Example: if three sibling units have weights `1`, `1`, and `2`, their relative w
 
 If a lesson includes the standard `#time_taken` question, First Draft can compute pacing signals that are shown to learners and instructors:
 
-- An “average” time shown as an interquartile mean (mean of the 25th–75th percentile range) to reduce outlier impact (requires more than 3 data points).
+- An "average" time shown as an interquartile mean (mean of the 25th–75th percentile range) to reduce outlier impact (requires more than 3 data points).
 - A **p95** time estimate (95th percentile; requires more than 20 data points).
 
 These values appear in places like lesson badges and calendar views to help instructors calibrate workload and sequencing.
@@ -748,7 +748,7 @@ This is where First Draft supports real course operations.
 Lesson units typically have a passing score (default often 80%). Passing matters because it can:
 
 - unlock later units (prerequisites)
-- affect “on track” vs “at risk” visibility
+- affect "on track" vs "at risk" visibility
 
 ### Due dates and late discounts
 
@@ -778,7 +778,7 @@ This supports both curiosity and sequencing.
 
 ### Withheld units
 
-Instructors can withhold units (e.g., “we’ll do this together in lecture”). Withheld units are unavailable, but later units can remain available.
+Instructors can withhold units (e.g., "we’ll do this together in lecture"). Withheld units are unavailable, but later units can remain available.
 
 ### Unrestricted units
 
@@ -820,12 +820,12 @@ Inside a lesson, learners get:
 
 - Table of contents toggle
 - A lesson scroll progress bar
-- A “progress pill” showing points earned / points possible
-- An “Assessment Details” table breaking down points by assessment
-- A “Reset answers” action that clears the current attempt without losing earned credit
+- A "progress pill" showing points earned / points possible
+- An "Assessment Details" table breaking down points by assessment
+- A "Reset answers" action that clears the current attempt without losing earned credit
 - Study Buddy always available in the same UI context
 
-The “Assessment Details” table is especially useful pedagogically: it makes “what counts” legible, which reduces learner anxiety and helps instructors debug ambiguous grading.
+The "Assessment Details" table is especially useful pedagogically: it makes "what counts" legible, which reduces learner anxiety and helps instructors debug ambiguous grading.
 
 ---
 
@@ -870,7 +870,7 @@ Instructors can set run-wide secrets (API keys, shared accounts). Learners can v
 
 ## Study Buddy deep dive
 
-Study Buddy is First Draft’s integrated AI tutor. Its goal is to shorten “stuck time” without pushing learners out of context.
+Study Buddy is First Draft’s integrated AI tutor. Its goal is to shorten "stuck time" without pushing learners out of context.
 
 ### Design goals
 
@@ -885,22 +885,22 @@ Study Buddy is First Draft’s integrated AI tutor. Its goal is to shorten “st
 
 Study Buddy is designed to be used frequently, so small UX details matter:
 
-- Always-available “Chat with Study Buddy” button (in the bottom action bar)
+- Always-available "Chat with Study Buddy" button (in the bottom action bar)
 - Keyboard shortcuts:
   - open/close: Cmd/Ctrl + J
   - submit: Cmd/Ctrl + Enter
 - Attachments via upload or paste-from-clipboard (useful for screenshots and diagrams)
 
-### Threads, context, and “staying in the lesson”
+### Threads, context, and "staying in the lesson"
 
 Study Buddy runs inside First Draft, so it can be meaningfully contextual:
 
 - When used from inside a lesson, the assistant can focus on *this* lesson’s content and context.
-- When used from a run overview (outside a lesson), Study Buddy can operate in a more course-logistics mode (e.g., “where is the topic X covered?”).
+- When used from a run overview (outside a lesson), Study Buddy can operate in a more course-logistics mode (e.g., "where is the topic X covered?").
 
 Learners can keep multiple conversations and revisit prior threads; instructors can also review them when needed.
 
-### Human escalation (“page a human”)
+### Human escalation ("page a human")
 
 If a learner needs instructor help:
 
@@ -923,7 +923,7 @@ First Draft treats AI as a teaching tool, not an authority:
 - Instructors can review threads (especially when a learner is stuck, or when an answer must be evaluated carefully).
 - The platform supports instructor interventions such as reply replacement/corrections, and can notify participants when a response has been replaced.
 
-### “Copy to Study Buddy” from code blocks
+### "Copy to Study Buddy" from code blocks
 
 Runnable code blocks include a one-click path to copy current code into Study Buddy—this reduces friction when asking debugging questions.
 
@@ -933,7 +933,7 @@ For technical instructors, it’s often useful to know whether learners are usin
 
 - token usage summaries (input/output)
 - mode selection (Socratic vs direct)
-- escalation frequency (how often “page a human” is used)
+- escalation frequency (how often "page a human" is used)
 
 ---
 
@@ -1008,7 +1008,7 @@ Many platform actions are asynchronous (e.g., syncing GitHub content, uploading 
 
 ### Audit trails and versioning
 
-First Draft uses audit/version history in multiple places (for example, Study Buddy prompt version history), which supports reproducibility and governance (“what changed, when, and by whom?”).
+First Draft uses audit/version history in multiple places (for example, Study Buddy prompt version history), which supports reproducibility and governance ("what changed, when, and by whom?").
 
 ### Security and privacy (high level)
 

@@ -492,7 +492,7 @@ Partial credit for `choose_all`: points are divided by the number of correct ans
 ### free_text_number (demo)
 
 - What does 2+2 evaluate to?
-- 4
+- 4.0
   - Correct.
 - any
   - Not quite — it’s the integer after 3.

@@ -192,7 +192,9 @@ Operationally, this enables a tight curriculum iteration loop:
 
 ### Learn-flavored Markdown
 
-First Draft supports a number of authoring features beyond "vanilla" Markdown:
+First Draft supports a number of authoring features beyond "vanilla" Markdown.
+
+Before you begin, familiarize yourself with [the basics of Markdown syntax](https://www.markdownguide.org/cheat-sheet/):
 
 #### Links open in a new tab by default
 

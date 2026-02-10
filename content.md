@@ -6,6 +6,13 @@ First Draft is a learning platform for teaching technical courses. Its design pr
 
 This document is intentionally detailed. It’s written for technical instructors evaluating First Draft, and it uses First Draft’s own lesson features to "show, not just tell."
 
+<div class="alert alert-info">
+
+Want a kitchen-sink lesson for reference? [Here is the source code for this lesson here](https://raw.githubusercontent.com/appdev-lessons/platform-overview/refs/heads/main/content.md).
+
+Have a general question about the platform; e.g. issues writing lessons or configuring a course? Click the button in the bottom right corner to "Chat with Study Buddy"!
+</div>
+
 ## Quick feature index
 
 If you want a fast scan, start here. Everything below is expanded in later sections.
@@ -21,11 +28,6 @@ If you want a fast scan, start here. Everything below is expanded in later secti
 | Study Buddy | Integrated AI tutor (Socratic vs direct), anonymous mode, copy-code-to-Study-Buddy, human escalation ("page a human"), prompt configuration + versioning, oversight tooling |
 | Integrations | GitHub-connected lessons (branches → preview lessons), Cloudinary asset hosting + uploads, LTI tool provider + tool consumer, optional Stripe purchase/trial gating |
 
-</div>
-
-<div class="alert alert-info">
-
-Want a kitchen-sink lesson for reference? [Here is the source code for this lesson here](https://raw.githubusercontent.com/appdev-lessons/platform-overview/refs/heads/main/content.md).
 </div>
 
 ## The mental model: lessons, courses, runs, units

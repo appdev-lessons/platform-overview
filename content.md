@@ -283,6 +283,13 @@ export API_KEY="replace-me"
 
 Attach a filename label:
 
+    ```ruby
+    get "/movies", to: "movies#index"
+    ```
+    {: filename="config/routes.rb" }
+
+That produces:
+
 ```ruby
 get "/movies", to: "movies#index"
 ```
@@ -301,6 +308,16 @@ Any combination works, and highlighting also works with HTML and ERB code blocks
 
 Example:
 
+    ```ruby{1:(1-6),3:(9-13)}
+    tokens = ["hello", "world", "!"]
+    tokens.each do |token|
+      print token
+      print " " if token.count("a-zA-Z") > 0
+    end
+    ```
+
+That produces:
+
 ```ruby{1:(1-6),3:(9-13)}
 tokens = ["hello", "world", "!"]
 tokens.each do |token|
@@ -312,6 +329,15 @@ end
 #### Math (KaTeX)
 
 Use LaTeX math inside `$$ ... $$` (double dollar-sign delimiters, not the single `$` used in vanilla LaTeX):
+
+```
+$$
+\Large
+\text{score} = \frac{\text{points earned}}{\text{points possible}}
+$$
+```
+
+That produces:
 
 $$
 \Large

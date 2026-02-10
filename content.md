@@ -55,12 +55,9 @@ A **run** is an instance of a course for a specific cohort/term. Runs are where 
 
 ### Unit
 
-Units are what sit inside a course/run structure. A unit can be a:
+Lessons contained in a course/run structure are called **units**.
 
-- **lesson unit** (most common)
-- **course unit** (nested structure)
-
-Units are also where pacing and gating is configured:
+Units are where pacing and gating is configured:
 
 - Weight (relative contribution to grade)
 - Passing score (threshold for unlocking)
@@ -81,16 +78,16 @@ flowchart TD
   A --> C[Code block]
   A --> P[LTI project]
 
-  Q --> QA[Attempts] --> QS[Submission (best attempt)]
-  C --> CA[Attempts] --> CS[Submission (best attempt)]
-  P --> PA[Attempts] --> PS[Submission (best attempt)]
+  Q --> QA[Attempts] --> QS["Submission (best attempt)"]
+  C --> CA[Attempts] --> CS["Submission (best attempt)"]
+  P --> PA[Attempts] --> PS["Submission (best attempt)"]
 
   QS --> LS[Lesson submission]
   CS --> LS
   PS --> LS
 
   LS --> RU[Run-unit submission]
-  RU --> R[Run submission / course grade]
+  RU --> R["Run submission / course grade"]
 ```
 
 In plain language:

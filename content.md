@@ -616,7 +616,7 @@ First Draft includes helpers and conventions to make tests readable for beginner
 
 For the full guide, see:
 
-- [How to write Ruby codeblock tests](https://learn.firstdraft.com/lessons/684-how-to-write-ruby-codeblock-tests)
+- [How to write Ruby codeblock tests](/lessons/684-how-to-write-ruby-codeblock-tests)
 
 ---
 
@@ -626,10 +626,10 @@ Some work is best done outside a single lesson page (e.g., multi-file projects).
 
 Authoring syntax (template):
 
-```
+<!-- ```
 LTI{Launch project}(https://grades.firstdraft.com/launch)[consumer]{secret}(10)[Project Name]
 ```
-{: copyable }
+{: copyable } -->
 
 This creates:
 

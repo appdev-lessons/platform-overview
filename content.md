@@ -211,14 +211,16 @@ You can:
 - Reference repo assets from `assets/` in GitHub-connected lessons:
 
 ```
-![Alt text](\assets/example.png)
+![Alt text](path-to-assets/example.jpg)
 ```
 {: copyable }
+
+(**Note:** that should read `![Alt text](assets/example.png)` for actual rendering; `path-to-assets` is used here to prevent actual parsing in this example.)
 
 Make anything full-width:
 
 ```
-![Alt text](\assets/example.png)
+![Alt text](path-to-assets/example.jpg)
 {: .bleed-full }
 ```
 {: copyable }

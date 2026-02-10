@@ -498,7 +498,7 @@ Partial credit for `choose_all`: points are divided by the number of correct ans
   - Not quite — it’s the integer after 3.
 {: .free_text_number #fd_v2_quiz_free_text_number_demo title="free_text_number demo" points="1" answer="1" }
 
-`free_text_number` matching is exact: the learner must enter the correct number. Equivalent decimals are accepted (e.g., `5`, `5.0`, `5.00` all match), but `5.1` does not.
+`free_text_number` matching is exact: the learner must enter the correct number.
 
 ### Quiz special cases
 

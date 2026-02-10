@@ -1018,29 +1018,29 @@ First Draft includes standard platform capabilities such as:
 
 ### Choose-best question template
 
-```
-- Prompt
-- Option 1
-  - Feedback
-- Option 2
-  - Feedback
-{: .choose_best #unique_id_0 title="Title" points="1" answer="2" }
-```
-{: copyable }
+    ```
+    - Prompt
+    - Option 1
+      - Feedback
+    - Option 2
+      - Feedback
+    {: .choose_best #unique_id_0 title="Title" points="1" answer="2" }
+    ```
+    {: copyable }
 
 ### Choose-all question template
 
-```
-- Prompt
-- Option 1
-  - Feedback
-- Option 2
-  - Feedback
-- Option 3
-  - Feedback
-{: .choose_all #unique_id_1 title="Title" points="2" answer="[1, 3]" }
-```
-{: copyable }
+    ```
+    - Prompt
+    - Option 1
+      - Feedback
+    - Option 2
+      - Feedback
+    - Option 3
+      - Feedback
+    {: .choose_all #unique_id_1 title="Title" points="2" answer="[1, 3]" }
+    ```
+    {: copyable }
 
 ### Runnable code block template
 
@@ -1085,4 +1085,4 @@ Pankiewicz, M., Baker, R., & Ocumpaugh, J. (2023). Using intelligent tutoring on
 ---
 
 - Approximately how long (in minutes) did this deep dive take you to read?
-{: .free_text_number #time_taken_deep_dive title="Time taken (deep dive)" points="1" answer="any" }
+{: .free_text_number #time_taken title="Time taken" points="1" answer="any" }

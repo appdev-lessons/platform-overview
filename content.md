@@ -350,6 +350,19 @@ The implementation uses [KaTeX](https://katex.org/) and is focused on math rende
 
 Use fenced `mermaid` blocks:
 
+      ```mermaid
+      sequenceDiagram
+        participant Learner
+        participant FirstDraft
+        participant Instructor
+        Learner->>FirstDraft: Attempt quiz / run code
+        FirstDraft-->>Learner: Feedback + points
+        Learner->>FirstDraft: Ask Study Buddy
+        FirstDraft-->>Instructor: Notify if needs approval / needs human
+      ```
+
+That produces:
+
 ```mermaid
 sequenceDiagram
   participant Learner
@@ -375,6 +388,12 @@ This supplementary note appears alongside the preceding element.
 </aside>
 ```
 {: copyable }
+
+That produces (see right margin):
+
+<aside>
+This supplementary note appears alongside the preceding element.
+</aside>
 
 #### Blockquotes
 

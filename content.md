@@ -347,7 +347,7 @@ Quiz questions are authored as a Markdown list, followed by a declaration line:
   - Feedback if selected
 - Option B
   - Feedback if selected
-{: .choose_best #unique_id title="Title" points="1" answer="2" }
+{: .choose_best #unique_id_4 title="Title" points="1" answer="2" }
 ```
 {: copyable }
 
@@ -434,9 +434,7 @@ Template (raw Learn-flavored Markdown):
     ```ruby
     puts "Hello"
     ```
-    {: .code-block #my_block title="Runnable Ruby" points="1" }
-
-Note: the class is written as `.code-block` here so this template doesn’t itself become a runnable block when this lesson is parsed. When authoring a real runnable block, use `.codeblock`.
+    {: .codeblock #my_block title="Runnable Ruby" points="1" }
 
 Key attributes:
 
@@ -549,7 +547,7 @@ A runnable block with an ID:
     ```ruby
     # student code here
     ```
-    {: .code-block #my_graded_block title="..." points="2" }
+    {: .codeblock #my_graded_block title="..." points="2" }
 
 One or more tests linked via `for="my_graded_block"`:
 
@@ -561,9 +559,7 @@ One or more tests linked via `for="my_graded_block"`:
       end
     end
     ```
-    {: .code-block-test #my_test_1 for="my_graded_block" title="..." points="1" }
-
-Note: the classes are written as `.code-block` / `.code-block-test` here so this template doesn’t itself become runnable/gradable when this lesson is parsed. When authoring real blocks, use `.codeblock` / `.codeblock-test`.
+    {: .codeblock-test #my_test_1 for="my_graded_block" title="..." points="1" }
 
 ### Graded Ruby (demo)
 
@@ -1028,7 +1024,7 @@ First Draft includes standard platform capabilities such as:
   - Feedback
 - Option 2
   - Feedback
-{: .choose_best #unique_id title="Title" points="1" answer="2" }
+{: .choose_best #unique_id_0 title="Title" points="1" answer="2" }
 ```
 {: copyable }
 
@@ -1042,7 +1038,7 @@ First Draft includes standard platform capabilities such as:
   - Feedback
 - Option 3
   - Feedback
-{: .choose_all #unique_id title="Title" points="2" answer="[1, 3]" }
+{: .choose_all #unique_id_1 title="Title" points="2" answer="[1, 3]" }
 ```
 {: copyable }
 
@@ -1051,16 +1047,14 @@ First Draft includes standard platform capabilities such as:
     ```ruby
     puts "Change me"
     ```
-    {: .code-block #unique_id title="Runnable Ruby" points="1" }
-
-Note: use `.codeblock` (not `.code-block`) when you actually want a runnable block.
+    {: .codeblock #unique_id_2 title="Runnable Ruby" points="1" }
 
 ### Graded code block template (Ruby)
 
     ```ruby
     pp "change me"
     ```
-    {: .code-block #unique_id title="Graded Ruby" points="2" }
+    {: .codeblock #unique_id_3 title="Graded Ruby" points="2" }
 
     ```ruby
     describe "Graded Ruby" do
@@ -1070,9 +1064,7 @@ Note: use `.codeblock` (not `.code-block`) when you actually want a runnable blo
       end
     end
     ```
-    {: .code-block-test #unique_test_id for="unique_id" title="Test title" points="1" }
-
-Note: use `.codeblock` / `.codeblock-test` (not `.code-block` / `.code-block-test`) when you actually want a graded block.
+    {: .codeblock-test #unique_test_id for="unique_id_3" title="Test title" points="1" }
 
 ---
 

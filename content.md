@@ -1209,11 +1209,9 @@ First Draft includes standard platform capabilities such as:
     ```
     {: .codeblock-test #unique_test_id for="unique_id_3" title="Test title" points="1" }
 
-## References
+## Time taken question
 
-Pankiewicz, M., Baker, R., & Ocumpaugh, J. (2023). Using intelligent tutoring on the first steps of learning to program: affective and learning outcomes. In N. Wang, G. Rebolledo-Mendez, V. Dimitrova, N. Matsuda, & O. C. Santos (Eds.), *Artificial Intelligence in Education* (pp. 593–598). Springer. https://doi.org/10.1007/978-3-031-36336-8_92
-
-## Reference: time taken question (copy/paste)
+You can copy-paste this example time taken question into the bottom of any lesson to build a time badge for the lesson:
 
     ---
 

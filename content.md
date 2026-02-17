@@ -1,4 +1,4 @@
-# First Draft learning platform
+# First Draft: Learning, Instructing, and Authoring Overview
 
 First Draft is a learning platform for teaching technical courses. Its design principle is:
 

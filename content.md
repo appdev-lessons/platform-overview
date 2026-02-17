@@ -38,6 +38,8 @@ You may want to begin by watching these videos. The written notes contain much m
 <div class="alert alert-info">
 
 As we encourage our students to actively experiment while watching videos, we encourage you as well to pause, experiment, and read while watching these videos. Try to create your own lessons, courses, and runs! Make edits and change the configuration! View the instructor abilities! And ask Study Buddy if you're confused by anything!
+
+**Note:** You can use the ↗ arrow icon to pop the video open in a new tab while you experiment.
 </div>
 
 #### Learning on firstdraft.com

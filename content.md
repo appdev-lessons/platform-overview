@@ -30,6 +30,34 @@ If you want a fast scan, start here. Everything below is expanded in later secti
 
 </div>
 
+
+### Video guides
+
+You may want to begin by watching these videos. The written notes contain much more detail, so do read and refer to them, but the video guides give a brief overview of features and functionality:
+
+<div class="alert alert-info">
+
+As we encourage our students to actively experiment while watching videos, we encourage you as well to pause, experiment, and read while watching these videos. Try to create your own lessons, courses, and runs! Make edits and change the configuration! View the instructor abilities! And ask Study Buddy if you're confused by anything!
+</div>
+
+#### Learning on firstdraft.com
+
+<iframe src="https://share.descript.com/embed/M5gpvPaaQ3L" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+#### Authoring on firstdraft.com
+
+<iframe src="https://share.descript.com/embed/eSlpWC3GM2E" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+#### Instructing on firstdraft.com
+
+<iframe src="https://share.descript.com/embed/VcZvNgADC67" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+#### Authoring GitHub-managed lessons on firstdraft.com
+
+<iframe src="https://share.descript.com/embed/mTPatEOZkdp" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+---
+
 ## The mental model: lessons, courses, runs, units
 
 If you understand these nouns, everything else fits.

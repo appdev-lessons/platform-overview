@@ -849,6 +849,8 @@ The source code for a few lessons with extensive graded code blocks are also hel
 
 Some work is best done outside a single lesson page (e.g., multi-file projects). First Draft supports LTI launches embedded in lessons.
 
+LTI{Launch Project}(https://grades.firstdraft.com/launch)[S9ymPy6WCsn18gLbByVbZQ7k]{vfdtzJb5bLYqYwuqgeRKpc5d}(10)[Example Project]
+
 Authoring syntax (template):
 
 ```

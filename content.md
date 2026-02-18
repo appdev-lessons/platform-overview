@@ -138,12 +138,16 @@ In plain language:
 
 First Draft distinguishes *what you can see* (access) from *what you can edit* (authoring permissions). In practice, many people occupy multiple roles (e.g., an instructor who also authors).
 
+### Authentication
+
+Learners and instructors sign in to First Draft with a **GitHub account**. If a user doesn't have one yet, they can [create a free GitHub account](/lessons/556-sign-up-for-github) before joining a course.
+
 ### Learners vs instructors (run access)
 
 Runs can grant access to users with a role:
 
 - **Learner**: progresses through units, earns points, uses Study Buddy, views calendar/secrets.
-- **Instructor**: sees instructor dashboards, gradebook exports, approvals, and override controls.
+- **Instructor**: sees instructor dashboards, gradebook exports, approvals, and override controls. Instructors can also access locked units without meeting prerequisites, allowing them to review any lesson in the run regardless of gating.
 
 If a run is launched via LTI (e.g., from Canvas), First Draft can infer learner vs instructor roles from the LTI launch payload.
 
@@ -197,7 +201,26 @@ You can author lessons either:
 
 Both approaches can coexist: even GitHub-connected lessons can be edited inline, and edits can be synced back to GitHub as commits.
 
+### Creating and managing lessons (platform UI)
+
+- Navigate to **Authoring → Authored Lessons** in the navigation bar to see lessons you've authored or have access to.
+- Click **New Lesson** to create a lesson via the inline Markdown editor or by connecting a GitHub repo.
+- The **Actions** dropdown on a lesson provides: edit, destroy, toggle **open access** (makes the lesson publicly available at its URL), create an invitation link, and manage collaborators.
+- Collaborators are added via comma-separated email addresses with **read**, **write**, or **admin** permission levels. Email addresses come from GitHub during sign in, and can be read from the **Name → Edit profile** page in the navigation bar. Descriptions of each collaboration level are displayed in the UI.
+
+
 ### GitHub-connected lessons
+
+#### Setup
+
+GitHub-connected lessons are housed in a **GitHub organization**. To get started:
+
+1. Create a GitHub organization (the free plan works).
+2. Use the [**First Draft lesson template**](https://github.com/firstdraft/firstdraft-lesson-template) to create a new repo in your organization. The template includes the required file structure: `content.md`, `assets/`, `.gitignore`, and `README`.
+3. On First Draft, from the navigation bar, head to **Name → Edit profile → Upgrade authoring permissions** to grant the platform read/write access to your GitHub organization. During the OAuth authorization flow, you must click **grant** next to your organization — otherwise syncing will not work.
+4. On First Draft, click **New Lesson → Connect GitHub**, paste the repository URL, select a branch (defaults to `main`), and click **Create Lesson**. Environment variables for code blocks can also be configured at this step.
+
+#### Repo convention
 
 GitHub-connected lessons follow a strict repo convention:
 
@@ -209,22 +232,28 @@ GitHub-connected lessons follow a strict repo convention:
 
 When connected, the lesson receives a URL containing a unique ID followed by the repo name (e.g., `https://firstdraft.com/lessons/799-platform-overview`), which provides a handy reference to both the lesson and its source repo.
 
-Behavior:
-
-- Commits/pushes update the rendered lesson automatically.
-- Branches create independent preview lessons (useful for PR review). Branch lessons can be found from the main lesson's "Other branches" UI, which links to a `/branches` page.
-- Local `assets/` references are uploaded/hosted and rewritten to served URLs.
-- Even GitHub-connected lessons can be edited inline on the platform. Inline edits are committed back to the repo automatically (with a generic commit message), keeping both locations in sync. Small fixes like typos are convenient to make inline; larger rewrites are better done via external editors and GitHub commits.
-
 Operationally, this enables a tight curriculum iteration loop:
 
-- Draft changes on a branch → get a preview lesson URL → review in pull request → merge to `main` branch → production lesson updates automatically. The branch lesson can then be deleted.
+#### Syncing behavior
 
-### Learn-flavored Markdown
+- Commits/pushes to GitHub update the rendered lesson automatically.
+- Inline edits on the platform are committed back to the repo automatically (with a generic commit message), keeping both locations in sync. Small fixes like typos are convenient to make inline; larger rewrites are better done via external editors and GitHub commits.
+- Local `assets/` references are uploaded/hosted and rewritten to served URLs.
+
+#### Branches and pull request workflow
+
+- When a new branch is pushed to GitHub, a preview lesson is **automatically created**. Access it via the main lesson's **Actions → View other branches**.
+- From a branch lesson, use **Actions** to navigate back to the main branch lesson. Edits on the branch lesson sync to the correct branch on GitHub.
+- The recommended workflow: draft changes on a branch → get a preview lesson URL → include the URL in the pull request description for reviewers → merge to `main` → the production lesson updates automatically.
+- After merging, clean up by destroying the branch lesson on First Draft (via **View other branches**) and deleting the branch on GitHub.
+
+### First Draft-flavored Markdown
 
 First Draft supports a number of authoring features beyond "vanilla" Markdown.
 
-Before you begin, familiarize yourself with [the basics of Markdown syntax](https://www.markdownguide.org/cheat-sheet/):
+Before you begin, familiarize yourself with [the basics of Markdown syntax](https://www.markdownguide.org/cheat-sheet/).
+
+If you want a raw, kitchen-sink example, [here is the source code for the current lesson you are reading](https://raw.githubusercontent.com/appdev-lessons/platform-overview/refs/heads/main/content.md).
 
 #### Links open in a new tab by default
 
@@ -976,6 +1005,55 @@ Unrestricted units are available regardless of prerequisite lock state. This is 
 
 Optional units don’t block progression and can be excluded from calendar time estimates.
 
+## Course and run setup (authoring workflow)
+
+The sections above cover how to *write* lesson content; this section covers how to assemble lessons into courses and deploy them as runs.
+
+### Creating and configuring a course
+
+- Navigate to **Authoring → Authored Courses** to see courses you can edit or administer.
+- Click **New Course** to create one with a title and optional description.
+- Add lessons to the course from any lesson you have at least read access on.
+- **Actions** on a course include: edit, **copy** (duplicate the entire course; a copy will appear back on the Authored Courses index), manage collaborators (via comma-separated email addresses with read/write/admin levels), configure a Study Buddy prompt, and manage **runs**.
+
+#### Ordering and hierarchy
+
+- Set unit position manually by entering a position number, or use **move up / move down** buttons.
+- **Indent / outdent** units to create visual hierarchy and group related lessons (learners see this as nested structure).
+
+#### Prerequisites
+
+- Add a prerequisite from an earlier unit. The learner must achieve the passing score on the prerequisite to unlock the dependent unit.
+- Remove prerequisites by clicking on them. Note: a unit's prerequisites must be removed before it can be deleted from the course.
+
+#### Unit configuration
+
+Per-unit configuration includes: weight, passing score (recommended below 100% so learners aren't blocked by a single missed point), late discount, essential/optional, withheld, and unrestricted.
+
+Configuration values are displayed as **badges** underneath each unit for quick reference while editing.
+
+#### Tags
+
+- Add tags to units from a list of available tags.
+- Create new tags via **Manage available tags**, then return to the course to assign them.
+- Delete a tag assignment by clicking on it.
+
+### Creating and configuring a run
+
+- From a course's **Actions → Runs**, create a new run by selecting a **time zone**.
+- Run creation duplicates the course structure. After a brief processing period, the run status changes to **ready**.
+- Run units inherit course configuration but can be overridden independently (e.g., different due dates, weights, or passing scores per run). This is what allows multiple sections to share a single course with different schedules and different requirements.
+- Use **Update run structure** to re-sync run units with upstream course changes at any time.
+- Runs support **metadata** (visible only to instructors under the run title — useful for labeling sections, e.g., "Section A — MWF 10am").
+- Run **visibility** can be toggled between open (public URL) and closed (invite-only). Most runs should be kept closed to prevent unwanted access.
+- Runs have their own **collaborators** (read/write/admin) independent of the course.
+
+### Deploying a run to learners
+
+- On first visit, click **Join as instructor** on the run page. This adds you with the instructor role.
+- Navigate to the **People** tab in the instructor dashboard to invite learners via invite link or email.
+- Invited users join with the **learner** role and do not have access to the instructor dashboard.
+
 ## Learner UX deep dive (what the platform surfaces)
 
 ### Run overview
@@ -983,6 +1061,7 @@ Optional units don’t block progression and can be excluded from calendar time 
 Learners see:
 
 - Final score and overall completion
+- A **resume** button that returns to the last lesson the learner was working on
 - A list of units with:
   - progress badge (with passing threshold)
   - due date (if set)
@@ -990,7 +1069,8 @@ Learners see:
   - essential/optional label
   - time taken badge (median and p95, if enough data)
   - prerequisites list
-  - tags for navigation
+  - tags for navigation — clicking a tag on an unlocked lesson opens it directly; clicking a tag on a locked lesson scrolls to that unit in the overview and shows its prerequisites
+  - withheld indicator (barrier icon, muted color, and tooltip) for units an instructor has not yet released
 
 ### Calendar view
 
@@ -1006,8 +1086,9 @@ Inside a lesson, learners get:
 
 - Table of contents toggle
 - A lesson scroll progress bar
+- Next/previous lesson breadcrumbs (top and bottom of the page) for sequential navigation within a run
 - A "progress pill" showing points earned / points possible
-- An "Assessment Details" table breaking down points by assessment
+- An "Assessment Details" table breaking down points by assessment — each assessment is linked, so learners can jump directly to any missed question
 - A "Reset answers" action that clears the current attempt without losing earned credit
 - Study Buddy always available in the same UI context
 
@@ -1021,9 +1102,12 @@ Runs provide instructor entry points for:
 
 - gradebook + CSV export
 - lesson release controls (withhold/release)
-- per-student overrides (due dates, waive late penalties, restrict/unrestrict)
-- roster management (invites)
+- a **people** page showing all enrolled users (with their role and how they joined), where instructors can:
+  - create shareable invite links
+  - send email invitations (and resend or delete pending invitations)
+  - apply per-student overrides: adjust due dates, waive late penalties, or unrestrict specific units (e.g., for medical accommodations or students who have fallen behind)
 - run secrets
+- **Study Buddy monitoring** (see below)
 
 ### Gradebook details
 
@@ -1071,16 +1155,16 @@ Study Buddy is designed to be used frequently, so small UX details matter:
 - Keyboard shortcuts:
   - open/close: Cmd/Ctrl + J
   - submit: Cmd/Ctrl + Enter
+- **Pin open** the Study Buddy pane to keep it visible while working through a lesson
+- Reopening the pane restores the most recent conversation; learners can also create new conversations or revisit any prior thread
 - Attachments via upload or paste-from-clipboard (useful for screenshots and diagrams)
 
 ### Threads, context, and "staying in the lesson"
 
 Study Buddy runs inside First Draft, so it can be meaningfully contextual:
 
-- When used from inside a lesson, the assistant can focus on *this* lesson’s content and context.
-- When used from a run overview (outside a lesson), Study Buddy can operate in a more course-logistics mode (e.g., "where is the topic X covered?").
-
-Learners can keep multiple conversations and revisit prior threads; instructors can also review them when needed.
+- When used from **inside a lesson**, Study Buddy acts as a **tutor** — giving contextual advice and explanations grounded in the lesson's content, just as a teacher would.
+- When used from the **run overview** (outside a lesson), Study Buddy operates in a **course-navigation mode** — returning links to relevant lessons (including ones not yet unlocked) to help the learner find where a topic is covered.
 
 ### Human escalation ("page a human")
 
@@ -1102,12 +1186,19 @@ Courses can be configured with a Study Buddy prompt that:
 First Draft treats AI as a teaching tool, not an authority:
 
 - Learners can escalate to a human.
-- Instructors can review threads (especially when a learner is stuck, or when an answer must be evaluated carefully).
+- Instructors have access to a **Study Buddy monitoring board** where they can:
+  - Review all student questions across the run
+  - Mark posts as read (for triage)
+  - Interject directly into a conversation — the student is notified of the instructor's reply
 - The platform supports instructor interventions such as reply replacement/corrections, and can notify participants when a response has been replaced.
 
 ### "Copy to Study Buddy" from code blocks
 
 Runnable code blocks include a one-click path to copy current code into Study Buddy—this reduces friction when asking debugging questions.
+
+### "Ask Study Buddy" from highlights
+
+Highlighting text in a lesson surfaces a tooltip with options to **Ask Study Buddy** or copy to clipboard. Choosing "Ask Study Buddy" opens a conversation pre-seeded with the highlighted text. These highlights persist across sessions — clicking a saved highlight reopens its associated Study Buddy conversation.
 
 ### Instrumentation (how AI is being used)
 
@@ -1122,7 +1213,8 @@ For technical instructors, it’s often useful to know whether learners are usin
 First Draft supports in-lesson highlighting and notes:
 
 - Learners can highlight text in the lesson content.
-- Highlights persist per learner (attached to their lesson submission).
+- Highlights persist per learner (attached to their lesson submission) and are maintained across sessions — navigating away and returning preserves all highlights.
+- Highlights double as Study Buddy entry points: clicking a highlight reopens the associated conversation (see "Ask Study Buddy" from highlights above).
 - Notes can be used as anchors for discussion and Study Buddy posts.
 
 This encourages precise questions and supports instructors reviewing learner confusion in context.

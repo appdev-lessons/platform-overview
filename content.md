@@ -46,13 +46,13 @@ As we encourage our students to actively experiment while watching videos, we en
 
 <iframe src="https://share.descript.com/embed/M5gpvPaaQ3L" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
-#### Authoring on firstdraft.com
-
-<iframe src="https://share.descript.com/embed/eSlpWC3GM2E" width="640" height="360" frameborder="0" allowfullscreen></iframe>
-
 #### Instructing on firstdraft.com
 
 <iframe src="https://share.descript.com/embed/VcZvNgADC67" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+#### Authoring on firstdraft.com
+
+<iframe src="https://share.descript.com/embed/eSlpWC3GM2E" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 #### Authoring GitHub-managed lessons on firstdraft.com
 

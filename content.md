@@ -10,6 +10,8 @@ This document is intentionally detailed. It’s written for technical instructor
 
 Want a kitchen-sink lesson for reference? [Here is the source code for this lesson here](https://raw.githubusercontent.com/appdev-lessons/platform-overview/refs/heads/main/content.md).
 
+We also have a quick lesson-writing reference [in this example lesson](/lessons/823-complete-example-lesson).
+
 Have a general question about the platform; e.g. issues writing lessons or configuring a course? Click the button in the bottom right corner to "Chat with Study Buddy"!
 </div>
 

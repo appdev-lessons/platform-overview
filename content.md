@@ -60,6 +60,10 @@ As we encourage our students to actively experiment while watching videos, we en
 
 <iframe src="https://share.descript.com/embed/mTPatEOZkdp" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
+#### LTI Codespace project integration
+
+<iframe src="https://share.descript.com/embed/f5YdAyMCrTR" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
 ---
 
 ## The mental model: lessons, courses, runs, units
@@ -791,6 +795,8 @@ Total points for a graded block are the sum of its individual test points. A nam
 
 ### Graded Ruby (demo)
 
+Review [our Ruby codeblock tests guide](/lessons/684-how-to-write-ruby-codeblock-tests) to see custom syntax and best practices for writing tests on our platform.
+
 ```ruby
 word = "banana" # don't edit this line
 
@@ -847,9 +853,22 @@ The source code for a few lessons with extensive graded code blocks are also hel
 - [Ruby Intro: Each](https://raw.githubusercontent.com/appdev-lessons/ruby-intro-each/main/content.md)
 - [Ruby Gym: Think Fast](https://raw.githubusercontent.com/appdev-lessons/ruby-gym-think-fast/main/content.md)
 
+## LTI (Learning Tools Interoperability)
+
+[Learning Tools Interoperability (LTI)](https://www.1edtech.org/standards/lti) is an open standard maintained by 1EdTech that defines how learning platforms and external tools communicate securely. In the LTI model, a **tool consumer** (typically an LMS such as Canvas, Moodle, Blackboard, or Brightspace) launches a **tool provider** (an external application) via an authenticated request. The tool provider can then send scores back to the consumer's gradebook through a mechanism called **grade passback** (formally, Assignment and Grade Services). This is the same standard used across higher education and K‑12 to connect LMS platforms with assessment engines, virtual labs, plagiarism checkers, and other third-party tools.
+
+First Draft supports LTI in both directions:
+
+- **As a tool consumer** — LTI launch buttons embedded in lessons open external tools (for example, the [Grades](https://grades.firstdraft.com) service for GitHub Codespaces projects). When a student completes the work, the tool provider sends the earned score back to First Draft, where it counts toward the lesson and course grade.
+- **As a tool provider** — First Draft itself can be launched from another LMS, so institutions already using Canvas, Blackboard, Brightspace, or similar platforms can embed First Draft lessons directly in their existing course shells. We have a guide demonstrating [an example firstdraft.com Run integration with Canvas](/lessons/285-lti-integration-with-canvas).
+
+Because LTI is an open standard, any LTI-compatible tool can in principle be embedded in a First Draft lesson, and First Draft lessons can in principle be embedded in any LTI-compatible LMS.
+
 ## Projects via LTI (external tools + grade passback)
 
-Some work is best done outside a single lesson page (e.g., multi-file projects). First Draft supports LTI launches embedded in lessons.
+Some work is best done outside a single lesson page (e.g., multi-file projects). First Draft supports LTI launches embedded in lessons for this purpose.
+
+Before you click the button below, review [this video](https://share.descript.com/view/f5YdAyMCrTR) for an end-to-end integration of a Grades-enabled GitHub Codespaces project.
 
 LTI{Launch Project}(https://grades.firstdraft.com/launch)[S9ymPy6WCsn18gLbByVbZQ7k]{vfdtzJb5bLYqYwuqgeRKpc5d}(10)[Example Project]
 
@@ -1259,10 +1278,7 @@ Code blocks are executed in sandboxed environments so learners don’t need loca
 
 ### LTI
 
-First Draft supports LTI as both:
-
-- tool provider (launch First Draft from an LMS)
-- tool consumer (launch external tools/projects from First Draft and receive grade passback)
+First Draft supports LTI as both a tool provider and a tool consumer. See the [LTI](#lti-learning-tools-interoperability) and [Projects via LTI](#projects-via-lti-external-tools--grade-passback) sections above for details.
 
 ### Optional purchase/trial gating
 

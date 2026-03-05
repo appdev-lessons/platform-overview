@@ -1068,7 +1068,10 @@ Configuration values are displayed as **badges** underneath each unit for quick 
 - Run units inherit course configuration but can be overridden independently (e.g., different due dates, weights, or passing scores per run). This is what allows multiple sections to share a single course with different schedules and different requirements.
 - Use **Update run structure** to re-sync run units with upstream course changes at any time.
 - Runs support **metadata** (visible only to instructors under the run title — useful for labeling sections, e.g., "Section A — MWF 10am").
-- Run **visibility** can be toggled between open (public URL) and closed (invite-only). Most runs should be kept closed to prevent unwanted access.
+- Run **access** and **visibility** are independent settings:
+  - **Access** (open/closed) controls joinability — whether anyone with the link can join, or only invited users.
+  - **Visibility** (listed/unlisted) controls discoverability — whether the run appears on the `/courses` page.
+  - These are orthogonal: a run can be open + listed (fully public), open + unlisted (joinable via direct link but hidden from browsing), closed + listed (browsable catalog but invite-only), or closed + unlisted (fully private).
 - Runs have their own **collaborators** (read/write/admin) independent of the course.
 
 ### Deploying a run to learners

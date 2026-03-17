@@ -1072,6 +1072,7 @@ Configuration values are displayed as **badges** underneath each unit for quick 
   - **Access** (open/closed) controls joinability — whether anyone with the link can join, or only invited users.
   - **Visibility** (listed/unlisted) controls discoverability — whether the run appears on the `/courses` page.
   - These are orthogonal: a run can be open + listed (fully public), open + unlisted (joinable via direct link but hidden from browsing), closed + listed (browsable catalog but invite-only), or closed + unlisted (fully private).
+- **Copy Due Dates from Another Run**: instead of manually setting due dates on each unit, instructors can select a source run (from any run they have access to, across any course) and a new starting date. The platform calculates the offset between the source run's earliest due date and the chosen start date, then applies that offset to all matching units in the target run — preserving the original spacing between due dates while shifting the entire schedule forward or backward.
 - Runs have their own **collaborators** (read/write/admin) independent of the course.
 
 ### Deploying a run to learners
